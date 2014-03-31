@@ -2,6 +2,9 @@
 
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= task.name %></li>
+    <li><a href="/tasks/<%= task.id %>"><%= task.name %></a></li>
   <% end %>
+
+  <p><button><a href="/tasks/new">Create a new task.</a></button></p>
+
 </ul>
