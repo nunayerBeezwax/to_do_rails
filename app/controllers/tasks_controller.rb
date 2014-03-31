@@ -30,11 +30,18 @@ class TasksController < ApplicationController
   end
 
   def update
-      @task = Task.find(params[:id])
-      if @task.update(:name => params[:name])
-        render('tasks/success.html.erb')
-      else
-        render('tasks/edit.html.erb')
-      end
+    @task = Task.find(params[:id])
+    if @task.update(:name => params[:name],
+                    :done => params[:done])
+      render('tasks/success.html.erb')
+    else
+      render('tasks/edit.html.erb')
     end
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    render('tasks/destroy.html.erb')
+  end
 end
